@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <title>A-ensongaheart</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free Website Template" name="keywords">
+    <meta content="Free Website Template" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="{% static 'lib/flaticon/font/flaticon.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+    <style>
+        /* Add some basic styling to the alert */
+        .success-alert {
+            position: fixed;
+            top: 20%;
+            right: 20px;
+            transform: translateY(-50%);
+            padding: 15px;
+            background-color: #d5eef5;
+            /* Set background color to white */
+            color: #333;
+            /* Set text color */
+            border: 1px solid #ccc;
+            /* Add a border */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: none;
+            /* Initially hide the alert */
+            max-width: 300px;
+            /* Set maximum width */
+            height: 80px;
+            /* Set height */
+            overflow: hidden;
+            /* Hide content that exceeds height */
+        }
+
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .modal-container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: auto;
+            margin-top: 50px;
+            width: 300px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Top Bar Start -->
+    <div class="top-bar d-none d-md-block">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="top-bar-left">
+                        <div class="text">
+                            <i class="fa fa-phone-alt"></i>
+                            <p>Tel: +233 24 7806393</p>
+                        </div>
+                        <div class="text">
+                            <i class="fa fa-envelope"></i>
+                            <p>aensongahearts@gmail.com</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="top-bar-right">
+                        <div class="social">
+                            <a target="_blank" href="https://twitter.com/aensongahearts?s=09"><i
+                                    class="fab fa-twitter"></i></a>
+                            <a target="_blank" href="https://www.facebook.com/aensongaHearts/?mibextid=ZbWKwL"><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a target="_blank" href="https://www.linkedin.com/company/a-ensonga-s-hearts/"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                            <a target="_blank" href="https://instagram.com/aensonga_hearts?igshid=YmMyMTA2M2Y="><i
+                                    class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Top Bar End -->
+
+    <!-- Nav Bar Start -->
+    <div class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+            <div style="display: flex; align-items: center; gap: .2rem;">
+                <img src="{% static 'img/a-ensonga.png' %}" class="rounded-circle" style="width: 50px; height: 50px;"
+                    alt="Avatar" />
+                <a href="{% url 'index' %}" class="text-success mb-0 h3"> A-ensongaHearts</a>
+            </div>
+
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <div class="navbar-nav ml-auto">
+                    <a href="{% url 'index' %}" class="nav-item nav-link active">Home</a>
+                    <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
+                    <a href="{% url 'causes' %}" class="nav-item nav-link">Causes</a>
+                    <a href="{% url 'event' %}" class="nav-item nav-link">Events</a>
+                    <a href="{% url 'blog' %}" class="nav-item nav-link">Blog</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                        <div class="dropdown-menu">
+                            <a href="{% url 'service' %}" class="dropdown-item">What We Do</a>
+                            <a href="{% url 'team' %}" class="dropdown-item">Meet The Team</a>
+                            <a href="{% url 'donate' %}" class="dropdown-item">Donate Now</a>
+                            <a href="{% url 'volunteer' %}" class="dropdown-item">Become A Volunteer</a>
+                        </div>
+                    </div>
+                    <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Nav Bar End -->
+
+
+    <main>
+        <!-- Page Header Start -->
+        <div class="page-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>Confirm Donatation</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page Header End -->
+
+        <div class="container modal-container">
+            <h3 class="text-center mb-4">Please Confirm</h3>
+            <h6>You are about to donate GHS {{donation.amount}} to A-ensongaHearts</h6>
+            <form accept="">
+
+                <script src="https://js.paystack.co/v1/inline.js"></script>
+                <button type="button" class="btn btn-success btn-block" onclick="payWithPaystack()" >Proceed</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer Start -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-contact">
+                        <h2>Our Address</h2>
+                        <p><i class="bi bi-buildings-fill"></i> A-ensonga Hearts Foundation</p>
+                        <p><i class="fa fa-map-marker-alt"></i>Hse No. 138 Lashibi</p>
+                        <p><i class="fa fa-map-marker-alt"></i>Community 16 Rd, Tema</p>
+                        <p><i class="bi bi-pin-map-fill"></i> GPS GT-353-5230 Ghana</p>
+                        <p><i class="fa fa-phone-alt"></i>Tel: +233 24 7806393</p>
+                        <p><i class="fa fa-envelope"></i>aensongahearts@gmail.com</p>
+                        <div class="footer-social">
+                            <a class="btn btn-custom" target="_blank" href="https://twitter.com/aensongahearts?s=09"><i
+                                    class="fab fa-twitter"></i></a>
+                            <a class="btn btn-custom" target="_blank"
+                                href="https://www.facebook.com/aensongaHearts/?mibextid=ZbWKwL"><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-custom" target="_blank"
+                                href="https://instagram.com/aensonga_hearts?igshid=YmMyMTA2M2Y="><i
+                                    class="fab fa-instagram"></i></a>
+                            <a class="btn btn-custom" target="_blank"
+                                href="https://www.linkedin.com/company/a-ensonga-s-hearts/"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-link">
+                        <h2>Popular Links</h2>
+                        <a href="">About Us</a>
+                        <a href="">Contact Us</a>
+                        <a href="">Popular Causes</a>
+                        <a href="">Upcoming Events</a>
+                        <a href="">Latest Blog</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-link">
+                        <h2>Useful Links</h2>
+                        <a href="">Terms of use</a>
+                        <a href="">Privacy policy</a>
+                        <a href="">Cookies</a>
+                        <a href="">Help</a>
+                        <a href="">FQAs</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-newsletter">
+                        <h2>Newsletter</h2>
+                        <form>
+                            <input class="form-control" placeholder="Email goes here">
+                            <button class="btn btn-custom">Submit</button>
+                            <label>Don't worry, we don't spam!</label>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container copyright">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; <a href="">A-ensonga Hearts Foundation</a>, All Right Reserved.</p>
+                </div>
+                <div class="col-md-6">
+                    <p>Designed By <a href="#">Yeng Sebastian</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to top button -->
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+    <!-- Pre Loader -->
+    <div id="loader" class="show">
+        <div class="loader"></div>
+    </div>
+
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{% static 'lib/counterup/counterup.min.js' %}"></script>
+    <script src="{% static 'lib/parallax/parallax.min.js' %}"></script>
+
+
+
+    <!-- Contact Javascript File -->
+    <script src="{% static 'mail/jqBootstrapValidation.min.js' %}"></script>
+    <script src="{% static 'mail/contact.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'js/main.js' %}"></script>
+
+    <script>
+        function payWithPaystack() {
+
+            var handler = PaystackPop.setup({
+                key: "{{paystack_public_key}}",  // Replace with your public key
+                email: "{{donation.email}}",
+                amount: "{{donation.amount}}" * 100,  // Paystack deals with amounts in kobo
+                currency: 'GHS',  // Change to your currency code
+                ref: "{{donation.reference}}",  // Generate a unique reference
+                callback: function(response) {
+                    // Handle the response from Paystack
+                    if (response.status === 'success') {
+                        // Redirect or perform other actions on successful payment
+                        window.location.href = "{% url 'verify_donation' donation.reference %}";
+                    } else {
+                        // Handle payment failure
+                        alert('Payment failed: ' + response.message);
+                    }
+                },
+            });
+
+            // Open the Paystack payment dialog
+            handler.openIframe();
+        }
+    </script>
+
+
+    <script>
+        // Function to show the success alert
+        function showSuccessAlert() {
+            var successAlert = document.getElementById('successAlert');
+            successAlert.style.display = 'block';
+
+            // Hide the alert after 5 seconds
+            setTimeout(function () {
+                successAlert.style.display = 'none';
+            }, 5000);
+        }
+
+        // Call the showSuccessAlert function when the page loads
+        document.addEventListener('DOMContentLoaded', showSuccessAlert);
+    </script>
+</body>
+
+</html>
