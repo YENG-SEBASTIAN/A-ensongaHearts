@@ -14,7 +14,7 @@ urlpatterns = [
     path('', index, name="index"),
     path('service/', service, name="service"),
     path('single/', single, name="single"),
-    path('team/', team, name="team"),
+    # path('team/', team, name="team"),
     path('volunteer/', volunteer, name="volunteer"),
     
     #form actions

@@ -4,7 +4,7 @@ from django.utils.html import format_html
 
 
 # Register your models here.
-from aensongaApp.models import HomeSlideshowImage, Cause, Event, TeamMember, Volunteer, Contact, Blog, Donation
+from aensongaApp.models import HomeSlideshowImage, Cause, Event, TeamMember, Volunteer, Contact, Blog, Donation, President
 
 class HomeSlideshowImageAdmin(admin.ModelAdmin):
     list_display = ('title', 'caption', 'display_picture')
@@ -124,3 +124,12 @@ class DonationAdmin(admin.ModelAdmin):
     amount_formatted.short_description = 'Amount (GH)'
 
 admin.site.register(Donation, DonationAdmin)
+
+
+
+class PresidentAdmin(admin.ModelAdmin):
+    list_display = ('name', 'created_at')
+    search_fields = ('name', 'created_at')
+    list_filter = ('created_at',)
+
+admin.site.register(President, PresidentAdmin)

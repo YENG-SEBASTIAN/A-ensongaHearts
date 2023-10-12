@@ -109,3 +109,19 @@ class Donation(models.Model):
         if self.verified:
             return True
         return False
+    
+    
+    
+
+class President(models.Model):
+    name = models.CharField(max_length=100)
+    picture = models.ImageField(upload_to="pictures/ceo")
+    about_me = models.TextField(max_length=500)
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        get_latest_by = 'created_at'
+    
+    def __str__(self):
+        return self.name

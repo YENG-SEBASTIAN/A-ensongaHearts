@@ -7,12 +7,12 @@
     {% block content %}
 
 <!-- Carousel Start -->
-<div class="carousel" style="position: relative;">
+<div class="carousel" style="position: relative; z-index: -1;">
     <div class="container-fluid">
         <div class="owl-carousel">
             {% for item in carousel %}
             <div class="carousel-item">
-                <div class="carousel-img" style="height: 40rem;">
+                <div class="carousel-img" style="height: 46rem;">
                     <img src="{{item.picture.url}}" alt="Image" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div class="carousel-text animation-container">
@@ -160,20 +160,35 @@
 
 
 <!-- CEO picture and recent messages -->
-<div class="container-fluid row-container" style="background: url('{% static 'img/donate.jpg' %}') center/cover no-repeat;">
+<div class="container-md row-container" style="background: url('{% static 'img/donate.jpg' %}') center/cover no-repeat;">
     <div class="row align-items-center">
         <div class="col-md-6 left-div text-white">
-            <div class="message">
-                <p>Your message about the image goes here.</p>
-                <p>This can be multiple lines of text.</p>
+            <div class="card bg-light border-10">
+                <div class="card-body">
+                    <h3 class="card-title"><strong>Meet Our CEO</strong></h3>
+                    <h5 class="card-subtitle mb-4">Message From Our President</h5>
+                    <p class="card-text">
+                        {{president.message}}
+                    </p>
+                </div>
             </div>
         </div>
-        <div class="col-md-6 right-div text-center bg-white p-4">
-            <img src="{% static 'img/contacts.jpg' %}" alt="Image Description" class="img-fluid">
+        <div class="col-md-6 right-div text-center">
+            <div class="card">
+                <img src="{{president.picture.url}}" alt="CEO" class="card-img-top img-fluid mt-10" style="border-radius: 15rem 5rem 0 0;">
+                <div class="card-body">
+                    <h3 class="card-title"><strong>{{president.name}}</strong></h3>
+                    <p class="card-text">{{president.about_me}}</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 <!-- end of message -->
+
+
+
+
 
 
 
@@ -289,7 +304,7 @@
                     <div class="facts-item">
                         <i style="color: black;" class="flaticon-charity"></i>
                         <div class="facts-text">
-                            <h3 style="color: black;" class="facts-plus" data-toggle="counter-up">400 <i
+                            <h3 style="color: black;" class="facts-plus" data-toggle="counter-up">{{volunteer}} <i
                                     class="bi bi-plus"></i></h3>
                             <p style="color: black;">Volunteers</p>
                         </div>
@@ -355,7 +370,7 @@
 
 
     <!-- Donate Start -->
-    <div class="donate" style="background-image: url('{% static 'img/donate.jpg' %}');">
+    <div class="donate" style="background-image: url('{% static 'img/event-2.jpg' %}'); ">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-7">
@@ -422,38 +437,6 @@
 
     <!-- Event End -->
 
-
-    <!-- Team Start -->
-    <div class="team">
-        <div class="container">
-            <div class="section-header text-center">
-                <p>Meet Our Team</p>
-                <h2>Awesome guys behind our charity activities</h2>
-            </div>
-            <div class="row">
-                {% for member in teamMembers %}
-                <div class="col-lg-3 col-md-6">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="{{member.profile.url}}" alt="Team Image">
-                        </div>
-                        <div class="team-text">
-                            <h2>{{member.fullName}}</h2>
-                            <p>{{member.designation}}</p>
-                            <div class="team-social">
-                                <a href="{{member.twitter}}" target="_blank"><i class="fab fa-twitter"></i></a>
-                                <a href="{{member.facebook}}" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                                <a href="{{member.linkedIn}}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="{{member.instagram}}" target="_blank"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-    <!-- Team End -->
 
 
     <!-- Volunteer Start -->
