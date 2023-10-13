@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 
-from aensongaApp.models import (HomeSlideshowImage, Cause, Event, TeamMember, Blog, Volunteer, Contact, Donation, President)
+from aensongaApp.models import (HomeSlideshowImage, Cause, Event, TeamMember, Blog, Volunteer, Contact, Donation, President, Project, ProjectGallary)
 from aensongaApp.forms import ContactForm, DonationForm
 from aensongaApp.utils import (send_volunteer_confirmation_email, send_contact_confirmation_email)
 
@@ -12,9 +12,9 @@ from aensongaApp.utils import (send_volunteer_confirmation_email, send_contact_c
 # Create your views here.
 
 def about(request):
-    teamMembers = TeamMember.objects.all()
+    volunteer = Volunteer.objects.count()
     context = {
-        "teamMembers":teamMembers,
+        "volunteer":volunteer,
     }
     return render(request, 'aensonga/about.html',context)
 
@@ -52,6 +52,7 @@ def index(request):
     blogs = Blog.objects.all()
     volunteer = Volunteer.objects.count()
     president = President.objects.latest()
+    projects = Project.objects.all()
     context = {
         "carousel":carousel,
         "courses":courses,
@@ -59,6 +60,7 @@ def index(request):
         "president":president,
         "blogs":blogs,
         "volunteer":volunteer,
+        "projects":projects,
     }
     return render(request, 'aensonga/index.html', context)
 
@@ -69,8 +71,12 @@ def service(request):
     }
     return render(request, 'aensonga/service.html', context)
 
-def single(request):
-    return render(request, 'aensonga/single.html')
+def single(request, pk):
+    projects = ProjectGallary.objects.filter(project=pk)
+    context = {
+        "projects":projects,
+    }
+    return render(request, 'aensonga/single.html', context)
 
 def team(request):
     teamMembers = TeamMember.objects.all()

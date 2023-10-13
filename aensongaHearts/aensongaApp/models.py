@@ -26,12 +26,11 @@ class Event(models.Model):
     flyer = models.ImageField(upload_to="pictures/Events")
     title = models.CharField(max_length=200)
     caption = models.TextField()
-    date = models.DateField()
-    time = models.TimeField()
-    venue = models.CharField(max_length=200)
+    month = models.CharField(max_length=100)
+    year = models.CharField(max_length=100)
 
     def __str__(self):
-        return f"{self.title} is happening live at {self.venue}"
+        return f"{self.title} will be happening live in {self.month} {self.year}"
     
     
 class TeamMember(models.Model):
@@ -110,8 +109,6 @@ class Donation(models.Model):
             return True
         return False
     
-    
-    
 
 class President(models.Model):
     name = models.CharField(max_length=100)
@@ -125,3 +122,20 @@ class President(models.Model):
     
     def __str__(self):
         return self.name
+    
+
+class Project(models.Model):
+    project_name = models.CharField(max_length=200)
+    project_description = models.TextField()
+    project_pic = models.ImageField(upload_to="pictures/project")
+    
+    def __str__(self):
+        return self.project_name
+    
+class ProjectGallary(models.Model):
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="pictures/projectGallary")
+    description = models.TextField()
+    
+    def __str__(self):
+        return self.project.project_name

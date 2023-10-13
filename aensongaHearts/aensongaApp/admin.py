@@ -4,7 +4,8 @@ from django.utils.html import format_html
 
 
 # Register your models here.
-from aensongaApp.models import HomeSlideshowImage, Cause, Event, TeamMember, Volunteer, Contact, Blog, Donation, President
+from aensongaApp.models import (HomeSlideshowImage, Cause, Event, TeamMember, Volunteer, Contact, 
+                                Blog, Donation, President, Project, ProjectGallary )
 
 class HomeSlideshowImageAdmin(admin.ModelAdmin):
     list_display = ('title', 'caption', 'display_picture')
@@ -31,9 +32,9 @@ class CauseAdmin(admin.ModelAdmin):
 admin.site.register(Cause, CauseAdmin)
 
 class EventAdmin(admin.ModelAdmin):
-    list_display = ('title', 'caption', 'date', 'time', 'venue', 'display_flyer')
-    search_fields = ['title', 'caption', 'venue']
-    list_filter = ['date', 'time']
+    list_display = ('title', 'caption', 'month', 'year',  'display_flyer')
+    search_fields = ['title', 'caption', 'year']
+    list_filter = ['month', 'year']
 
     def display_flyer(self, obj):
         return mark_safe(f'<img src="{obj.flyer.url}" width="100" height="100" />')
@@ -42,37 +43,37 @@ class EventAdmin(admin.ModelAdmin):
 
 admin.site.register(Event, EventAdmin)
 
-class TeamMemberAdmin(admin.ModelAdmin):
-    list_display = ('fullName', 'designation', 'display_profile', 'display_twitter', 'display_facebook', 'display_linkedIn', 'display_instagram')
-    search_fields = ['fullName', 'designation']
-    list_filter = ['fullName', 'designation']
+# class TeamMemberAdmin(admin.ModelAdmin):
+#     list_display = ('fullName', 'designation', 'display_profile', 'display_twitter', 'display_facebook', 'display_linkedIn', 'display_instagram')
+#     search_fields = ['fullName', 'designation']
+#     list_filter = ['fullName', 'designation']
 
-    def display_profile(self, obj):
-        return format_html('<img src="{}" width="100" height="100" />', obj.profile.url)
+#     def display_profile(self, obj):
+#         return format_html('<img src="{}" width="100" height="100" />', obj.profile.url)
 
-    display_profile.short_description = 'Profile Preview'
+#     display_profile.short_description = 'Profile Preview'
 
-    def display_twitter(self, obj):
-        return format_html('<a href="{}" target="_blank">{}</a>', obj.twitter, obj.twitter)
+#     def display_twitter(self, obj):
+#         return format_html('<a href="{}" target="_blank">{}</a>', obj.twitter, obj.twitter)
 
-    display_twitter.short_description = 'Twitter'
+#     display_twitter.short_description = 'Twitter'
 
-    def display_facebook(self, obj):
-        return format_html('<a href="{}" target="_blank">{}</a>', obj.facebook, obj.facebook)
+#     def display_facebook(self, obj):
+#         return format_html('<a href="{}" target="_blank">{}</a>', obj.facebook, obj.facebook)
 
-    display_facebook.short_description = 'Facebook'
+#     display_facebook.short_description = 'Facebook'
 
-    def display_linkedIn(self, obj):
-        return format_html('<a href="{}" target="_blank">{}</a>', obj.linkedIn, obj.linkedIn)
+#     def display_linkedIn(self, obj):
+#         return format_html('<a href="{}" target="_blank">{}</a>', obj.linkedIn, obj.linkedIn)
 
-    display_linkedIn.short_description = 'LinkedIn'
+#     display_linkedIn.short_description = 'LinkedIn'
 
-    def display_instagram(self, obj):
-        return format_html('<a href="{}" target="_blank">{}</a>', obj.instagram, obj.instagram)
+#     def display_instagram(self, obj):
+#         return format_html('<a href="{}" target="_blank">{}</a>', obj.instagram, obj.instagram)
 
-    display_instagram.short_description = 'Instagram'
+#     display_instagram.short_description = 'Instagram'
 
-admin.site.register(TeamMember, TeamMemberAdmin)
+# admin.site.register(TeamMember, TeamMemberAdmin)
 
 class VolunteerAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'reason')
@@ -133,3 +134,34 @@ class PresidentAdmin(admin.ModelAdmin):
     list_filter = ('created_at',)
 
 admin.site.register(President, PresidentAdmin)
+
+
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ('project_name', 'project_description', 'display_image')
+    search_fields = ('project_name', 'project_description')
+    list_filter = ('project_name',)
+
+    def display_image(self, obj):
+        return mark_safe(f'<img src="{obj.project_pic.url}" width="100" height="100" />')
+
+    display_image.short_description = 'Project Image'
+
+admin.site.register(Project, ProjectAdmin)
+
+
+class ProjectGalleryAdmin(admin.ModelAdmin):
+    list_display = ('project_name', 'image', 'description_preview')
+    search_fields = ('project__project_name', 'description')
+    list_filter = ('project__project_name',)
+
+    def project_name(self, obj):
+        return obj.project.project_name if obj.project else ''
+    
+
+    def description_preview(self, obj):
+        return obj.description[:50] + '...' if obj.description else ''
+
+    project_name.short_description = 'Project Name'
+    description_preview.short_description = 'Description Preview'
+
+admin.site.register(ProjectGallary, ProjectGalleryAdmin)
