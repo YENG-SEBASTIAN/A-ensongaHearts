@@ -3,7 +3,8 @@ from django.contrib import messages
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 
-from aensongaApp.models import (HomeSlideshowImage, Cause, Event, TeamMember, Blog, Volunteer, Contact, Donation, President, Project, ProjectGallary)
+from aensongaApp.models import (HomeSlideshowImage, Cause, Event, TeamMember, Blog, Volunteer, Contact, Donation, President, Project, 
+                                ProjectGallary, Fact)
 from aensongaApp.forms import ContactForm, DonationForm
 from aensongaApp.utils import (send_volunteer_confirmation_email, send_contact_confirmation_email)
 
@@ -13,8 +14,12 @@ from aensongaApp.utils import (send_volunteer_confirmation_email, send_contact_c
 
 def about(request):
     volunteer = Volunteer.objects.count()
+    projectCount = Project.objects.count()
+    facts = Fact.objects.all().first()
     context = {
         "volunteer":volunteer,
+        "projectCount":projectCount,
+        "facts":facts,
     }
     return render(request, 'aensonga/about.html',context)
 
@@ -53,14 +58,19 @@ def index(request):
     volunteer = Volunteer.objects.count()
     president = President.objects.latest()
     projects = Project.objects.all()
+    projectCount = Project.objects.count()
+    facts = Fact.objects.all().first()
+    print(facts.country)
     context = {
         "carousel":carousel,
         "courses":courses,
         "events":events,
+        "facts":facts,
         "president":president,
         "blogs":blogs,
         "volunteer":volunteer,
         "projects":projects,
+        "projectCount":projectCount,
     }
     return render(request, 'aensonga/index.html', context)
 

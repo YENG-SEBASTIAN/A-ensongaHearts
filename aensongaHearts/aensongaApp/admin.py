@@ -5,7 +5,7 @@ from django.utils.html import format_html
 
 # Register your models here.
 from aensongaApp.models import (HomeSlideshowImage, Cause, Event, TeamMember, Volunteer, Contact, 
-                                Blog, Donation, President, Project, ProjectGallary )
+                                Blog, Donation, President, Project, ProjectGallary, Fact )
 
 class HomeSlideshowImageAdmin(admin.ModelAdmin):
     list_display = ('title', 'caption', 'display_picture')
@@ -165,3 +165,9 @@ class ProjectGalleryAdmin(admin.ModelAdmin):
     description_preview.short_description = 'Description Preview'
 
 admin.site.register(ProjectGallary, ProjectGalleryAdmin)
+
+
+class FactAdmin(admin.ModelAdmin):
+    list_display = ('country', 'our_goal', 'raised')
+
+admin.site.register(Fact, FactAdmin)

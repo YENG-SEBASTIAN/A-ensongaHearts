@@ -139,3 +139,12 @@ class ProjectGallary(models.Model):
     
     def __str__(self):
         return self.project.project_name
+    
+
+class Fact(models.Model):
+    country = models.IntegerField(default=0)
+    our_goal = models.IntegerField(default=0)
+    raised = models.IntegerField(default=0)
+    
+    def __str__(self):
+        return f"Country {self.country},  Our goal {self.our_goal}, Raised {self.raised}"
