@@ -6,7 +6,7 @@ from aensongaApp.paystack import PayStack
 class HomeSlideshowImage(models.Model):
     picture = models.ImageField(upload_to="pictures/Carousel")
     title = models.CharField(max_length=500)
-    caption = models.TextField()
+    caption = models.TextField(blank=True)
     
     
     def __str__(self):
@@ -16,8 +16,8 @@ class HomeSlideshowImage(models.Model):
 class Cause(models.Model):
     picture = models.ImageField(upload_to="pictures/Courses")
     title = models.CharField(max_length=200)
-    caption = models.TextField()
-    targetAmount = models.PositiveBigIntegerField()
+    caption = models.TextField(blank=True)
+    # targetAmount = models.PositiveBigIntegerField()
     def __str__(self):
         return self.title
     
@@ -113,7 +113,7 @@ class Donation(models.Model):
 class President(models.Model):
     name = models.CharField(max_length=100)
     picture = models.ImageField(upload_to="pictures/ceo")
-    about_me = models.TextField(max_length=500)
+    about_me = models.TextField(max_length=500, blank=True)
     message = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     
@@ -126,7 +126,7 @@ class President(models.Model):
 
 class Project(models.Model):
     project_name = models.CharField(max_length=200)
-    project_description = models.TextField()
+    project_description = models.TextField(blank=True)
     project_pic = models.ImageField(upload_to="pictures/project")
     
     def __str__(self):
@@ -135,7 +135,7 @@ class Project(models.Model):
 class ProjectGallary(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     image = models.ImageField(upload_to="pictures/projectGallary")
-    description = models.TextField()
+    description = models.TextField(blank=True)
     
     def __str__(self):
         return self.project.project_name

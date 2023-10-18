@@ -20,9 +20,9 @@ admin.site.register(HomeSlideshowImage, HomeSlideshowImageAdmin)
 
 
 class CauseAdmin(admin.ModelAdmin):
-    list_display = ('title', 'caption', 'targetAmount', 'display_picture')
+    list_display = ('title', 'caption', 'display_picture')
     search_fields = ['title', 'caption']
-    list_filter = ('title', 'caption', 'targetAmount')
+    list_filter = ('title', 'caption')
 
     def display_picture(self, obj):
         return mark_safe(f'<img src="{obj.picture.url}" width="100" height="100" />')

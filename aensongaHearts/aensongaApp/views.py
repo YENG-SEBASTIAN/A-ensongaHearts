@@ -83,8 +83,11 @@ def service(request):
 
 def single(request, pk):
     projects = ProjectGallary.objects.filter(project=pk)
+    project_name = ProjectGallary.objects.get(id=pk)
+    print(project_name)
     context = {
         "projects":projects,
+        "project_name":project_name
     }
     return render(request, 'aensonga/single.html', context)
 
