@@ -357,7 +357,7 @@
             <div class="row">
                 {% for project in projects %}
                 <div class="col-lg-4">
-                    <a href="{% url 'single' project.id %}">
+                    <a href="{% url 'single' project.project_name %}">
                         <div class="blog-item">
                             <div class="blog-img"">
                                 <img src="{{project.project_pic.url}}" alt="Image" style="height: 20rem;>

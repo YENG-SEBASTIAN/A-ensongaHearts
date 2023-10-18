@@ -81,10 +81,9 @@ def service(request):
     }
     return render(request, 'aensonga/service.html', context)
 
-def single(request, pk):
-    projects = ProjectGallary.objects.filter(project=pk)
-    project_name = ProjectGallary.objects.get(id=pk)
-    print(project_name)
+def single(request, project_name):
+    project_name = Project.objects.get(project_name=project_name)
+    projects = ProjectGallary.objects.filter(project=project_name)
     context = {
         "projects":projects,
         "project_name":project_name

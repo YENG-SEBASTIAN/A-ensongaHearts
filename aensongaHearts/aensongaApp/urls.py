@@ -13,7 +13,7 @@ urlpatterns = [
     path('event/', event, name="event"),
     path('', index, name="index"),
     path('service/', service, name="service"),
-    path('gallary/<int:pk>/', single, name="single"),
+    path('gallary/<str:project_name>/', single, name="single"),
     # path('team/', team, name="team"),
     path('volunteer/', volunteer, name="volunteer"),
     
