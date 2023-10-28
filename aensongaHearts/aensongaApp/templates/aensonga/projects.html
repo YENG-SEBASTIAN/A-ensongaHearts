@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'aensonga/base.html' %}
+{% load static %}
+
+<body>
+    {% block content %}
+
+    <!-- Page Header Start -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Popular Projects`</h2>
+                </div>
+                <div class="col-12">
+                    <a href="">Home</a>
+                    <a href="">Projects</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Project Start -->
+    <div class="blog">
+        <div class="container">
+            <div class="section-header text-center">
+                <p>Popular Project</p>
+                <h2>Our popular project</h2>
+            </div>
+            <div class="row">
+                {% for project in projects %}
+                <div class="col-lg-4">
+                    <a href="{% url 'single' project.project_name %}">
+                        <div class="blog-item">
+                            <div class="blog-img"">
+                                <img src=" {{project.project_pic.url}}" alt="Image" style="height: 20rem;>
+                            </div>
+                            <div class=" blog-text">
+                                <h3><a href="#">{{project.project_name}}</a></h3>
+                                <p>
+                                    {{project.project_description}}
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- Project End -->
+
+    {% endblock %}
+</body>
+
+</html>

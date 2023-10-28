@@ -57,7 +57,6 @@ def index(request):
     blogs = Blog.objects.all()
     volunteer = Volunteer.objects.count()
     president = President.objects.latest()
-    projects = Project.objects.all()
     projectCount = Project.objects.count()
     facts = Fact.objects.all().first()
     print(facts.country)
@@ -69,10 +68,16 @@ def index(request):
         "president":president,
         "blogs":blogs,
         "volunteer":volunteer,
-        "projects":projects,
         "projectCount":projectCount,
     }
     return render(request, 'aensonga/index.html', context)
+
+def projects(request):
+    projects = Project.objects.all()
+    context = {
+        "projects":projects,
+    }
+    return render(request, 'aensonga/projects.html', context)
 
 def service(request):
     courses = Cause.objects.all()

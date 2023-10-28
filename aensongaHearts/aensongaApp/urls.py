@@ -1,7 +1,7 @@
 
 from django.urls import path
 
-from aensongaApp.views import (about, blog, causes, contact, donate, event, index, service, 
+from aensongaApp.views import (about, blog, causes, contact, donate, event, index, projects, service, 
                                single, team, volunteer, become_volunteer, contact_us, donate_view, verify_donation )
 
 urlpatterns = [
@@ -12,6 +12,7 @@ urlpatterns = [
     path('donate/', donate, name="donate"),
     path('event/', event, name="event"),
     path('', index, name="index"),
+    path('projects/', projects, name="projects"),
     path('service/', service, name="service"),
     path('gallary/<str:project_name>/', single, name="single"),
     # path('team/', team, name="team"),
