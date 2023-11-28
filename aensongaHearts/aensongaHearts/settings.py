@@ -133,8 +133,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'aensongahearts@gmail.com'
-EMAIL_HOST_PASSWORD = 'mrzcisfovzobytje'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 
-PAYSTACK_SECRET_KEY = 'sk_test_1647c6e5027d985947efb2f705963271a38b58c6'
-PAYSTACK_PUBLIC_KEY = 'pk_test_ba1d5cad36b29949404ab7e7658b4c7546959009'
+PAYSTACK_SECRET_KEY = ''
+PAYSTACK_PUBLIC_KEY = ''
