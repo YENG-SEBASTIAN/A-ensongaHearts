@@ -32,9 +32,13 @@
                     <div class="event-item">
                         <img src="{{project.image.url}}" height="400" alt="Image">
                         <div class="event-content">
-                            <div class="event-text">
-                                <p>{{project.description}}</p>
-                            </div>
+                            {% if project.description %}
+                                <div class="event-text">
+                                    <p>{{project.description}}</p>
+                                </div>
+                            {% else %}
+                                <div></div>
+                            {% endif %
                         </div>
                     </div>
                 </div>
