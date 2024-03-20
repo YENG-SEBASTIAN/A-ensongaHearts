@@ -18,6 +18,36 @@
         </div>
         <!-- Page Header End -->
 
+<!-- Event Start -->
+<div class="event">
+    <div class="container" style="z-index: -1;">
+        <div class="section-header text-center">
+            <p>Popular Project</p>
+            <h2>{{ project_name }}</h2>
+        </div>
+        <div class="row">
+            {% for project in projects %}
+            <div class="col-lg-6">
+                <div class="event-item">
+                    {% if project.image %}
+                    <img src="{{ project.image.url }}" height="400" alt="Image">
+                    {% endif %}
+                    <div class="event-content">
+                        {% if project.description %}
+                        <div class="event-text">
+                            <p>{{ project.description }}</p>
+                        </div>
+                        {% else %}
+                        <div></div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- Event End -->
 
     <!-- Event Start -->
     <div class="event">
@@ -38,7 +68,7 @@
                                 </div>
                             {% else %}
                                 <div></div>
-                            {% endif %
+                            {% endif %}
                         </div>
                     </div>
                 </div>

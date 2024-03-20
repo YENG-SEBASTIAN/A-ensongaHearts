@@ -1,6 +1,12 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 from django.utils.html import format_html
+from django.utils.translation import gettext_lazy as _
+
+admin.site.site_header = _('A-ensongahearts Administration')
+admin.site.index_title = _('A-ensongahearts Admin Dashboard')
+
+
 
 
 # Register your models here.
